@@ -11,9 +11,12 @@ const state = {
  
 // getters
 const getters = {
-  filteredPosts(state){
-    let posts = state.all.filter(post => post.available === state.filter.available);
+  filteredPosts(state, getters){
+    console.log(state.all.filter(post => post.available === state.filter.available))
+    const posts = state.all.filter(post => post.available === state.filter.available);
+    console.log(`este es el post ${posts}`)
     if(state.filter.query > 2){
+      console.log('es > 2')
         return posts.filter(post => post.title.toLowerCase().includes(state.filter.query));
     }
     return posts;
@@ -31,7 +34,7 @@ const actions = {
 
 // mutations
 const mutations = {
-  setPosts (state, posts) {
+  SET_POSTS (state, posts) {
     state.all = posts
   },
   SET_QUERY (state, query) {

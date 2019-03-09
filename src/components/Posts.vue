@@ -1,20 +1,18 @@
 <template>
 	<div>
-		<h1>Listado de posts</h1>
-		<ul class="list-group">
-			<li class="list-group-item" v-for="post in posts" :key="post.id">{{ post.title }}</li>
-		</ul>
+		<h1 class="text-center text-muted">Buscador Post</h1>
+		<search-form></search-form>
+		<hr/>
+		<post-list></post-list>
 	</div>
 </template>
 <script>
-	import { mapState } from 'vuex'
-
+	import SearchForm from './posts/SearchPost.vue'
+	import PostList from './posts/postList.vue'
 	export default {
-		computed: mapState({
-			posts: state => state.posts.all
-		}),
-		created () {
-			this.$store.dispatch('posts/getAllPosts')
+		components: {
+			SearchForm,
+			PostList
 		}
 	}
 </script>

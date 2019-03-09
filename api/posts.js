@@ -2,9 +2,9 @@
  * Mocking client-server processing
  */
 const _posts = [
-  {"id": 1, "title": "apartament 1 ciudadela", "category": "apartament", "available": true,"inventory": 2},
-  {"id": 2, "title": "apartement 2 colinas", "category": "apartament", "available": true,"inventory": 10},
-  {"id": 3, "title": "apartament 3 ciudad caribe", "category": "apartament", "available": false,"inventory": 5}
+  {"id": 1, "title": "ciudadela", "description": "descripcion del post", "category": "apartament", "available": true,"inventory": 2},
+  {"id": 2, "title": "colinas", "description": "descripcion del post", "category": "apartament", "available": true,"inventory": 10},
+  {"id": 3, "title": "ciudad caribe", "description": "descripcion del post", "category": "apartament", "available": false,"inventory": 5}
 ]
 
 export default {

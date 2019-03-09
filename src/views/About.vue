@@ -1,17 +1,13 @@
 <template>
   <div class="about">
-  	<search-form></search-form>
-    <posts />
+  	<posts></posts>
   </div>
 </template>
 <script>
-	import posts from '@/components/Posts.vue'
-	import SearchForm from '@/components/posts/SearchPost.vue'
+	import Posts from '../components/Posts.vue'
 	export default {
-		name: 'post',
 		components: {
-			posts,
-			SearchForm
+			Posts
 		}
 	}
 </script>
