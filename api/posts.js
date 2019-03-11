@@ -1,23 +1,13 @@
-/**
- * Mocking client-server processing
- */
+import webserviceInversiones from "./repository";
+const resource = "/posts";
 const _posts = [
-  {"id": 1, "title": "ciudadela", "description": "descripcion del post", "category": "apartament", "available": true,"inventory": 2},
-  {"id": 2, "title": "colinas", "description": "descripcion del post", "category": "apartament", "available": true,"inventory": 10},
-  {"id": 3, "title": "ciudad caribe", "description": "descripcion del post", "category": "apartament", "available": false,"inventory": 5}
-]
+  {"id": 1, "title": "iPad 4 Mini", "price": 500.01, "available": true},
+  {"id": 2, "title": "H&M T-Shirt White", "price": 10.99, "available": true},
+  {"id": 3, "title": "Charli XCX - Sucker CD", "price": 19.99, "available": true}
+];
 
-export default {
-  getPosts (cb) {
+export default { 
+	getPosts (cb) {
     setTimeout(() => cb(_posts), 100)
-  },
-
-  suscribePosts (posts, cb, errorCb) {
-    setTimeout(() => {
-      // simulate random checkout failure.
-      (Math.random() > 0.5 || navigator.userAgent.indexOf('PhantomJS') > -1)
-        ? cb()
-        : errorCb()
-    }, 1000)
   }
 }

@@ -3,6 +3,7 @@ import posts from '../../../api/posts'
 // initial state
 const state = {
   all: [],
+  allFind: [],
   filter: {
     query: '',
     available: true
@@ -11,15 +12,8 @@ const state = {
  
 // getters
 const getters = {
-  filteredPosts(state, getters){
-    console.log(state.all.filter(post => post.available === state.filter.available))
-    const posts = state.all.filter(post => post.available === state.filter.available);
-    console.log(`este es el post ${posts}`)
-    if(state.filter.query > 2){
-      console.log('es > 2')
-        return posts.filter(post => post.title.toLowerCase().includes(state.filter.query));
-    }
-    return posts;
+  filteredPosts: (state, getters, rootState) => {
+      console.log(state)
   }
 }
 
@@ -27,7 +21,7 @@ const getters = {
 const actions = {
   getAllPosts ({ commit }) {
     posts.getPosts(posts => {
-      commit('setPosts', posts)
+      commit('SET_POSTS', posts)
     })
   }
 }

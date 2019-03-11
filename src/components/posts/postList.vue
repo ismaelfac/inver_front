@@ -10,15 +10,21 @@
 </template>
 <script>
 	import PostItem from './PostItem.vue'
-	import { mapGetters } from 'vuex'
+	import { mapGetters, mapState } from 'vuex'
 	export default {
 		components: {
 			PostItem
 		},
 		computed: {
+			...mapState({
+			    posts: state => state.posts.all
+			  }),
 			...mapGetters('posts',{
 				posts: 'filteredPosts'
 			})
-		}
+		},
+		created () {
+		    this.$store.dispatch('posts/getAllPosts')
+		  }
 	}	
 </script>
