@@ -86,14 +86,17 @@ export default {
 	},
 	methods: {
 		authenticate() {
-			this.$store.dispatch("login");
+			console.log("entro");
+			this.$store.dispatch("session/login");
 			login(this.$data.form)
 				.then(res => {
-					this.$store.commit("loginSuccess", res);
+					console.info("entro al res", this.$data.form);
+					this.$store.commit("session/loginSuccess", res);
 					this.$router.push({ path: "/" });
 				})
 				.catch(error => {
-					this.$store.commit("loginFailed", { error });
+					console.warn("error pailas", error);
+					this.$store.commit("session/loginFailed", { error });
 				});
 		}
 	},
