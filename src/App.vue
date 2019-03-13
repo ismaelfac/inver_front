@@ -1,13 +1,15 @@
 <template>
   <div id="app">
-    <div
-      class="text-center alert"
-      :class="item.state_message"
-      role="alert"
-      v-if="message"
-      v-for="item in items"
-    >
-      {{ item.message_user }}
+    <div v-if="message">
+      <ul class="list-group">
+        <li
+          class="text-center list-group-item list-group-item-info"
+          :class=""
+          v-for="item in items"
+        >
+          <b>{{ item.message_user }}</b>
+        </li>
+      </ul>
     </div>
     <Header></Header>
 

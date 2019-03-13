@@ -7,9 +7,9 @@
 
             <!-- Start page content -->
             <section id="page-content" class="page-wrapper">
-                <!-- FEATURED FLAT AREA START -->
-                <properties-favorites></properties-favorites>
-                <!-- FEATURED FLAT AREA END -->
+                <!--PROPERTIEES CATEGORIES-->
+                <properties-categories></properties-categories>
+                <!--PROPERTIEES CATEGORIES-->
 
                 <!-- BLOG AREA START -->
                 <div class="blog-area pb-60">
@@ -34,12 +34,12 @@
 </template>
 <script>
 import Slider from "./Slider.vue";
-import PropertiesFavorites from "../../components/properties/properties_favorites.vue";
+import PropertiesCategories from "../../components/properties/properties_categories.vue";
 export default {
     name: "Content",
     components: {
         Slider,
-        PropertiesFavorites
+        PropertiesCategories
     },
     data() {
         return {

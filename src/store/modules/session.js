@@ -7,11 +7,11 @@ const state = {
 	isLoggedIn: !!user,
 	loading: false,
 	auth_error: null,
-	message: false,
+	message: true,
 	items_message: [
 		{
 			message_user: "Debe Confirmar su correo",
-			state_message: "alert-info"
+			state_message: "info"
 		}
 	]
 };
