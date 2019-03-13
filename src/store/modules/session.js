@@ -6,7 +6,14 @@ const state = {
 	currentUser: user,
 	isLoggedIn: !!user,
 	loading: false,
-	auth_error: null
+	auth_error: null,
+	message: false,
+	items_message: [
+		{
+			message_user: "Debe Confirmar su correo",
+			state_message: "alert-info"
+		}
+	]
 };
 
 // getters

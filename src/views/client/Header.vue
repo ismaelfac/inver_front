@@ -5,14 +5,14 @@
       <div class="header-top-bar bg-white">
         <div class="container">
           <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="col-md-2 col-sm-6 col-xs-12">
               <div class="logo">
                 <a href="index.html">
                   <img src="../../assets/website/images/logo/logo.png" alt="" />
                 </a>
               </div>
             </div>
-            <div class="col-md-6 hidden-sm hidden-xs">
+            <div class="col-md-7 hidden-sm hidden-xs">
               <div class="company-info clearfix">
                 <div class="company-info-item">
                   <div class="header-icon">
@@ -49,17 +49,14 @@
                 <ul class="nav navbar-nav navbar-right">
                   <!-- Authentication Links -->
                   <template v-if="!currentUser">
-                    <div>
-                      <li>
-                        <router-link to="/login" class="nav-link"
-                          >Login</router-link
-                        >
-                      </li>
-                      <li>
-                        <router-link to="/register" class="nav-link"
-                          >Registrarme</router-link
-                        >
-                      </li>
+                    <div class="m-auto" style="display:inline-flex">
+                      <router-link tag="li" to="/login"
+                        ><a href="">Login</a></router-link
+                      >
+                      <div class="ml-2 mr-2">|</div>
+                      <router-link tag="li" to="/register"
+                        ><a href="">Registrarme</a></router-link
+                      >
                     </div>
                   </template>
                   <template v-else>
