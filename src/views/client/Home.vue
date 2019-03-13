@@ -1,6 +1,10 @@
 <template>
 	<div>
+		<Header></Header>
+
 		<router-view></router-view>
+
+		<Footer></Footer>
 	</div>
 </template>
 
@@ -15,3 +19,4 @@ export default {
 	}
 };
 </script>
+<style lang="scss" scoped></style>

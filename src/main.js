@@ -5,6 +5,9 @@ import store from "./store";
 import "./registerServiceWorker";
 import { initialize } from "./helpers/general";
 import Axios from "axios";
+import "./scss/style.scss";
+
+const ScrollReveal = require("scrollreveal");
 
 Vue.prototype.$http = Axios;
 

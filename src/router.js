@@ -8,7 +8,7 @@ let router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: "/home",
+      path: "/",
       name: "content",
       component: () =>
         import(/* webpackChunkName: "content" */ "./views/client/Content.vue")
