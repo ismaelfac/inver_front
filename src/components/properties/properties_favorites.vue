@@ -4,9 +4,11 @@
 		<div class="container">
 			<div class="row">
 				<properties-favorites-item
-					v-for="property in properties"
-					:property="property"
+					v-for="(property, index) in properties"
 					:key="property.id"
+					:properties="properties"
+					:property="property"
+					:index="index"
 				></properties-favorites-item>
 			</div>
 		</div>
@@ -23,7 +25,10 @@ export default {
 	},
 	computed: mapState({
 		properties: state => state.properties.all
-	})
+	}),
+	created() {
+		this.$store.dispatch("properties/getAllProperties");
+	}
 };
 </script>
 <style lang="css" scoped></style>

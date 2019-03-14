@@ -1,7 +1,10 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 ">
+      <div
+        class="col-xs-12"
+        style="min-width: 100%; max-height: 480px; overflow: scroll; "
+      >
         <nav>
           <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
             <a
@@ -12,7 +15,7 @@
               role="tab"
               aria-controls="nav-home"
               aria-selected="true"
-              >Home</a
+              >Arriendo</a
             >
             <a
               class="nav-item nav-link"
@@ -22,7 +25,7 @@
               role="tab"
               aria-controls="nav-profile"
               aria-selected="false"
-              >Profile</a
+              >Venta</a
             >
             <a
               class="nav-item nav-link"
@@ -32,7 +35,7 @@
               role="tab"
               aria-controls="nav-contact"
               aria-selected="false"
-              >Contact</a
+              >Inversiones</a
             >
             <a
               class="nav-item nav-link"
@@ -42,7 +45,7 @@
               role="tab"
               aria-controls="nav-about"
               aria-selected="false"
-              >About</a
+              >Permutados</a
             >
           </div>
         </nav>
@@ -53,7 +56,7 @@
             role="tabpanel"
             aria-labelledby="nav-home-tab"
           >
-            <h1>Propiedades</h1>
+            <properties-favorites></properties-favorites>
           </div>
           <div
             class="tab-pane fade"
@@ -112,12 +115,13 @@
 import PropertiesFavorites from "./properties_favorites.vue";
 export default {
   name: "PropertiesCategories",
-  components: {}
+  components: {
+    PropertiesFavorites
+  }
 };
 </script>
 <style lang="css" scoped>
 nav > .nav.nav-tabs{
-
   border: none;
     color:#fff;
     background:#272e38;

@@ -3,7 +3,7 @@ import api_properties from "../../../api/properties";
 // initial state
 const state = {
 	all: [],
-	allFind: [],
+	FindProperties: [],
 	filter: {
 		query: "",
 		available: true
@@ -13,29 +13,35 @@ const state = {
 // getters
 const getters = {
 	filteredPosts(state) {
-		console.info(api_posts);
-		let posts = state.all.find(post => post.title === state.filter.query);
+		console.info(api_properties);
+		let properties = state.all.find(
+			post => post.title === state.filter.query
+		);
 		if (state.filter.query.length > 2) {
-			console.info(posts);
-			/*return posts.filter(post =>
+			console.info(properties);
+			/*return properties.filter(post =>
         post.title.toLowerCase().includes(state.filter.query)
       );*/
 		}
-		return posts;
+		return properties;
 	}
 };
 
 // actions
 const actions = {
 	async getAllProperties({ commit }) {
-		const _properties = await api_properties.getProperties();
-		commit("SET_PROPERTIES", _properties);
+		const _properties = await api_properties.getPropertiesGeneral(
+			properties => commit("SET_PROPERTIES", properties)
+		);
+	},
+	addFavorites({ state, commit }, property) {
+		console.info("entro a addFavorites");
 	}
 };
 
 // mutations
 const mutations = {
-	SET_PROPERTIES(state, api_properties) {
+	SET_PROPERTIES(state, _properties) {
 		state.all = _properties;
 	},
 	SET_QUERY(state, query) {
