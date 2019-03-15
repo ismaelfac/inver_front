@@ -3,7 +3,7 @@
     <div class="row">
       <div
         class="col-xs-12"
-        style="min-width: 100%; max-height: 480px; overflow: scroll; "
+        style="min-width: 100%; max-height: 510px; overflow: scroll; "
       >
         <nav>
           <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
@@ -15,7 +15,7 @@
               role="tab"
               aria-controls="nav-home"
               aria-selected="true"
-              >Arriendo</a
+              >Arriendos</a
             >
             <a
               class="nav-item nav-link"
@@ -25,7 +25,7 @@
               role="tab"
               aria-controls="nav-profile"
               aria-selected="false"
-              >Venta</a
+              >En Venta</a
             >
             <a
               class="nav-item nav-link"

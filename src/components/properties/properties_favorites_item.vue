@@ -29,11 +29,11 @@
 				}}</span>
 			</div>
 			<div class="product-content">
-				<h3 class="title">
+				<h3 class="title" style="min-height: 35px; max-height: 35px; ">
 					<a href="#">{{ property.title }}</a>
 				</h3>
 				<div class="price">
-					{{ property.sale_price }} Cop<br />
+					${{ property.sale_price }} cop<br />
 					<ul class="flat-desc">
 						<li>
 							<img
@@ -73,6 +73,21 @@
 import { mapState, mapActions } from "vuex";
 export default {
 	name: "PropertiesFavortiesItem",
+	filters: {
+		capitalize: function(value) {
+			if (!value) return "";
+			value = value.toString();
+			return value.charAt(0).toUpperCase() + value.slice(1);
+		},
+		UpperCaseLowerCase: function(value) {
+			return value
+				.split(" ")
+				.map(function(word) {
+					word.charAt(0).toUpperCase() + word.slice(1);
+				})
+				.join(" ");
+		}
+	},
 	props: {
 		property: {
 			type: Object,

@@ -4,5 +4,5 @@ const baseDomain = "https://jsonplaceholder.typicode.com";
 const baseURL = `${baseDomain}`;
 
 export default axios.create({
-    baseURL
+	baseURL
 });

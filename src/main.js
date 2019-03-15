@@ -4,12 +4,14 @@ import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
 import { initialize } from "./helpers/general";
-import Axios from "axios";
+import axios from "axios";
 import "./scss/style.scss";
 
 const ScrollReveal = require("scrollreveal");
 
-Vue.prototype.$http = Axios;
+Vue.prototype.$http = axios;
+
+/*Filters*/
 
 const token = localStorage.getItem("token");
 if (token) {
