@@ -71,8 +71,10 @@
 </template>
 <script>
 import { mapState, mapActions } from "vuex";
+import { modalMixin } from "../../mixins/modalMixin";
 export default {
 	name: "PropertiesFavortiesItem",
+	mixins: [modalMixin],
 	filters: {
 		capitalize: function(value) {
 			if (!value) return "";
