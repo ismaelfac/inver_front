@@ -20,7 +20,10 @@ let router = new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/client/About.vue")
+        import(/* webpackChunkName: "about" */ "./views/client/About.vue"),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/login",
@@ -32,10 +35,19 @@ let router = new Router({
         import(/* webpackChunkName: "about" */ "./components/auth/Login.vue")
     },
     {
+      path: "/register",
+      name: "register",
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./components/auth/Register.vue")
+    },
+    {
       path: "/panel" /*Panel Routes*/,
       name: "panel",
       component: () =>
-        import(/* webpackChunkName: "panel" */ "./views/panelAdmin/panel.vue")
+        import(/* webpackChunkName: "panel" */ "./views/panelAdmin/Dashboard.vue")
     }
   ]
 });

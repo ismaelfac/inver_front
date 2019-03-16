@@ -9,15 +9,13 @@ import "./scss/style.scss";
 
 const ScrollReveal = require("scrollreveal");
 
-Vue.prototype.$http = axios;
-
-/*Filters*/
-
-const token = localStorage.getItem("token");
-if (token) {
-	Vue.prototype.$http.defaults.headers.common["Authorization"] = token;
-}
 Vue.config.productionTip = false;
+Vue.prototype.$http = axios;
+const accessToken = localStorage.getItem("access_token");
+
+if (accessToken) {
+	Vue.prototype.$http.defaults.headers.common["Authorization"] = accessToken;
+}
 
 new Vue({
 	router,

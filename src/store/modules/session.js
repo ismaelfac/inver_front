@@ -1,13 +1,10 @@
-import { getLocalUser } from "../../../api/auth";
-
-const user = getLocalUser();
 // initial state
 const state = {
-	currentUser: user,
-	isLoggedIn: !!user,
-	loading: false,
-	auth_error: null,
+	status: "",
+	accessToken: localStorage.getItem("access_token") || "",
+	user: "",
 	message: true,
+	role: null,
 	items_message: [
 		{
 			message_user: "Debe Confirmar su correo",
@@ -18,50 +15,84 @@ const state = {
 
 // getters
 const getters = {
-	isLoading(state) {
-		return state.loading;
-	},
-	isLoggedIn(state) {
-		return state.isLoggedIn;
-	},
-	auth_error(state) {
-		return state.auth_error;
-	},
-	currentUser(state) {
-		return state.currentUser;
-	}
+	isLoggedIn: state => !!state.token,
+	authStatus: state => state.status
 };
 
 // actions
 const actions = {
-	login(context) {
-		context.commit("login");
+	login({ commit }, user) {
+		return new Promise((resolve, reject) => {
+			commit("auth_request");
+			axios({
+				url: "http://localhost:8000/api/login",
+				data: user,
+				method: "POST"
+			})
+				.then(resp => {
+					const token = resp.data.token;
+					const user = resp.data.user;
+					localStorage.setItem("token", token);
+					axios.defaults.headers.common["Authorization"] = token;
+					commit("auth_success", token, user);
+					resolve(resp);
+				})
+				.catch(err => {
+					commit("auth_error");
+					localStorage.removeItem("token");
+					reject(err);
+				});
+		});
+	},
+	register({ commit }, user) {
+		return new Promise((resolve, reject) => {
+			commit("auth_request");
+			axios({
+				url: "http://localhost:3000/register",
+				data: user,
+				method: "POST"
+			})
+				.then(resp => {
+					const token = resp.data.token;
+					const user = resp.data.user;
+					localStorage.setItem("token", token);
+					axios.defaults.headers.common["Authorization"] = token;
+					commit("auth_success", token, user);
+					resolve(resp);
+				})
+				.catch(err => {
+					commit("auth_error", err);
+					localStorage.removeItem("token");
+					reject(err);
+				});
+		});
+	},
+	logout({ commit }) {
+		return new Promise((resolve, reject) => {
+			commit("logout");
+			localStorage.removeItem("token");
+			delete axios.defaults.headers.common["Authorization"];
+			resolve();
+		});
 	}
 };
 
 // mutations
 const mutations = {
-	login(state) {
-		state.loading = true;
-		state.auth_error = null;
+	auth_request(state) {
+		state.status = "loading";
 	},
-	loginSuccess(state, payload) {
-		state.auth_error = null;
-		state.isLoggedIn = true;
-		state.loading = false;
-		state.currentUser = Object.assign({}, payload.user, {
-			token: payload.access_token
-		});
-		localStorage.setItem("user", JSON.stringify(state.currentUser));
+	auth_success(state, token, user) {
+		state.status = "success";
+		state.token = token;
+		state.user = user;
 	},
-	loginFailed(state, payload) {
-		state.loading = false;
-		state.auth_error = payload.error;
+	auth_error(state) {
+		state.status = "error";
 	},
 	logout(state) {
-		localStorage.removeItem("user");
-		state.isLoggedIn = false;
-		state.currentUser = null;
+		state.status = "";
+		state.token = "";
 	}
 };
 
