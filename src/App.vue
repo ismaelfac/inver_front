@@ -11,15 +11,18 @@
         </li>
       </ul>
     </div>
+    <!-- Header -->
     <template v-if="role">
       <header-admin></header-admin>
     </template>
     <template v-else>
       <header-client></header-client>
     </template>
+    <!-- Content -->
 
     <router-view></router-view>
 
+    <!-- Footer -->
     <template v-if="role">
       <footer-admin></footer-admin>
     </template>

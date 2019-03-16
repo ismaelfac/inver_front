@@ -19,7 +19,6 @@ export function initialize(store, router) {
             store.commit("logout");
             router.push("/login");
         }
-
         return Promise.reject(error);
     });
 

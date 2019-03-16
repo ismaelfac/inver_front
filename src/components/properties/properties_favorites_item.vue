@@ -30,17 +30,17 @@
 			</div>
 			<div class="product-content">
 				<h3 class="title" style="min-height: 35px; max-height: 35px; ">
-					<a href="#">{{ property.title }}</a>
+					<a href="#">{{ property.title | UpperLower }}</a>
 				</h3>
 				<div class="price">
-					${{ property.sale_price }} cop<br />
+					{{ property.sale_price | toCop }}<br />
 					<ul class="flat-desc">
 						<li>
 							<img
 								src="../../assets/website/images/icons/4.png"
 								alt=""
 							/>
-							<span>{{ property.area }} Mts</span>
+							<span>{{ property.area | areaTotal }}</span>
 						</li>
 						<li>
 							<img

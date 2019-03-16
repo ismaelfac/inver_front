@@ -4,7 +4,7 @@ const resource = "/properties";
 const _properties = [
 	{
 		id: "1",
-		title: "Oficinas Centro Comercial Buena Vista 2",
+		title: "oficinas Centro Comercial Buena Vista 2",
 		area: "105",
 		type_property: "office",
 		for: "rent",

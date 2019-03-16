@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
+import { filters } from "./helpers/filters";
 import { initialize } from "./helpers/general";
 import axios from "axios";
 import "./scss/style.scss";
